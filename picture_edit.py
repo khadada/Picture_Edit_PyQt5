@@ -50,3 +50,27 @@ class PictureEditor(QMainWindow):
         self.exit_act.setShortcut("Ctrl+Q")
         self.exit_act.setStatusTip("Close the program (T_T).")
         self.exit_act.triggered.connect(self.close)
+        
+        # 02: actions for "Edit" menu:
+        self.rotate90_act = QAction("Rotate 90°",self)
+        self.rotate90_act.setStatusTip("Rotate the picture 90° clockwise.")
+        self.rotate90_act.triggered.connect(self.rotate_picture_90)
+        
+        self.rotate180_act = QAction("Rotate 180°",self)
+        self.rotate180_act.setStatusTip("Rotate the picture 180° clockwise.")
+        self.rotate180_act.triggered.connect(self.rotate_picture_180)
+        
+        self.flip_h_act = QAction("Flip Horizontal",self)
+        self.flip_h_act.setStatusTip("Flip the picture across horizontal axis.")
+        self.flip_h_act.triggered.connect(self.flip_picture_horizontal)
+        
+        self.flip_v_act = QAction("Flip Verticlal",self)
+        self.flip_v_act.setStatusTip("Flip the picture across vertical axis.")
+        self.flip_v_act.triggered.connect(self.flip_picture_vertical)
+        
+        self.resize_act = QAction("Resize Half",self)
+        self.resize_act.setStatusTip("Resize picture to half of the original size.")
+        self.resize_act.triggered.connect(self.resize_picture_half)
+        
+        
+        
