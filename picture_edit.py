@@ -23,3 +23,11 @@ class PictureEditor(QMainWindow):
         self.create_menu()
         self.create_toolbar()
         self.picture_editor_widget()
+    
+    def create_menu(self):
+        """
+        Create menu for this project.
+        """
+        
+        
+        
