@@ -18,11 +18,11 @@ class PictureEditor(QMainWindow):
         """
         self.setFixedSize(700, 700)
         self.setWindowTitle("5.2 Picute Editor")
-        self.central_main_widget()
-        self.create_tools_docks()
+        # self.central_main_widget()
+        # self.create_tools_docks()
         self.create_menu()
-        self.create_toolbar()
-        self.picture_editor_widget()
+        #self.create_toolbar()
+        #self.picture_editor_widget()
     
     def create_menu(self):
         """
@@ -31,51 +31,51 @@ class PictureEditor(QMainWindow):
         # I: Creating Actions 
         # 01: actions for "File" menu:
         self.setIconSize(QSize(20, 20))
-        self.open_act = QAction(QIcon("icons/open.png","Open",self))
+        self.open_act = QAction(QIcon("icons/open.png"),"Open",self)
         self.open_act.setShortcut("Ctrl+O")
         self.open_act.setStatusTip("Open new picture")
-        self.open_act.triggered.connect(self.open_image)
+        #self.open_act.triggered.connect(self.open_image)
         
         self.save_act = QAction(QIcon('icons/save.png'),"Save",self)
         self.save_act.setShortcut("Ctrl+S")
         self.save_act.setStatusTip("Save the picture")
-        self.save_act.triggered.connect(self.save_image)
+        #self.save_act.triggered.connect(self.save_image)
         
         self.print_act = QAction(QIcon('icons/print.png'),"Print",self)
         self.print_act.setShortcut("Ctrl+P")
         self.print_act.setStatusTip("Print the current picture.")
-        self.print_act.triggered.connect(self.print_image)
+        #self.print_act.triggered.connect(self.print_image)
         
         self.exit_act = QAction(QIcon('icons/exit.png'),"Exit",self)
         self.exit_act.setShortcut("Ctrl+Q")
         self.exit_act.setStatusTip("Close the program (T_T).")
-        self.exit_act.triggered.connect(self.close)
+        #self.exit_act.triggered.connect(self.close)
         
         # 02: actions for "Edit" menu:
         self.rotate90_act = QAction("Rotate 90°",self)
         self.rotate90_act.setStatusTip("Rotate the picture 90° clockwise.")
-        self.rotate90_act.triggered.connect(self.rotate_picture_90)
+        #self.rotate90_act.triggered.connect(self.rotate_picture_90)
         
         self.rotate180_act = QAction("Rotate 180°",self)
         self.rotate180_act.setStatusTip("Rotate the picture 180° clockwise.")
-        self.rotate180_act.triggered.connect(self.rotate_picture_180)
+        #self.rotate180_act.triggered.connect(self.rotate_picture_180)
         
-        self.flip_h_act = QAction("Flip Horizontal",self)
+        self.flip_h_act = QAction(QIcon('icons/flip_h.png'),"Flip Horizontal",self)
         self.flip_h_act.setStatusTip("Flip the picture across horizontal axis.")
-        self.flip_h_act.triggered.connect(self.flip_picture_horizontal)
+        #self.flip_h_act.triggered.connect(self.flip_picture_horizontal)
         
-        self.flip_v_act = QAction("Flip Verticlal",self)
+        self.flip_v_act = QAction(QIcon('icons/flip_v.png'),"Flip Verticlal",self)
         self.flip_v_act.setStatusTip("Flip the picture across vertical axis.")
-        self.flip_v_act.triggered.connect(self.flip_picture_vertical)
+        #self.flip_v_act.triggered.connect(self.flip_picture_vertical)
         
         self.resize_act = QAction("Resize Half",self)
         self.resize_act.setStatusTip("Resize picture to half of the original size.")
-        self.resize_act.triggered.connect(self.resize_picture_half)
+        #self.resize_act.triggered.connect(self.resize_picture_half)
         
         self.clear_act = QAction(QIcon('icons/clear.png'),"Clear Picture",self)
         self.clear_act.setStatusTip("Clear the current picture")
         self.clear_act.setShortcut("Ctrl+Shift+c")
-        self.clear_act.triggered.connect(self.clear_picture)
+        #self.clear_act.triggered.connect(self.clear_picture)
         
         # 03: Create Menu Bar
         menu_bar = self.menuBar()
@@ -104,7 +104,7 @@ class PictureEditor(QMainWindow):
         
         # 06: Create View menu and add its actions:
         view_menu = menu_bar.addMenu("View")
-        view_menu.addAction(self.toggle_dock_tools_act)
+        # view_menu.addAction(self.toggle_dock_tools_act)
         
         # 07: Create Status bar to display info tips:
         self.setStatusBar(QStatusBar(self))
