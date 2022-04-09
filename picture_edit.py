@@ -105,3 +105,6 @@ class PictureEditor(QMainWindow):
         # 06: Create View menu and add its actions:
         view_menu = menu_bar.addMenu("View")
         view_menu.addAction(self.toggle_dock_tools_act)
+        
+        # 07: Create Status bar to display info tips:
+        self.setStatusBar(QStatusBar(self))
