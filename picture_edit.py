@@ -4,3 +4,8 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow,QWidget,QLabel,QAction,QF
 from PyQt5.QtGui import(QIcon, QPixmap,QTransform,QPainter)
 from PyQt5.QtCore import (Qt, QSize, QRect)
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
+
+# Create class that hold own GUI:
+class PictureEditor(QMainWindow):
+    def __init__(self):
+        super().__init__()
