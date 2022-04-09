@@ -11,4 +11,15 @@ class PictureEditor(QMainWindow):
         super().__init__()
         self.initialize_ui()
         self.show()
-    
+        
+    def initialize_ui(self):
+        """
+        Initialize the window and display its contents to the screen
+        """
+        self.setFixedSize(700, 700)
+        self.setWindowTitle("5.2 Picute Editor")
+        self.central_main_widget()
+        self.create_tools_docks()
+        self.create_menu()
+        self.create_toolbar()
+        self.picture_editor_widget()
