@@ -108,3 +108,9 @@ class PictureEditor(QMainWindow):
         
         # 07: Create Status bar to display info tips:
         self.setStatusBar(QStatusBar(self))
+        
+# Run the program:
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    picture_program = PictureEditor()
+    sys.exit(app.exec_())
