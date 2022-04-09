@@ -106,8 +106,23 @@ class PictureEditor(QMainWindow):
         view_menu = menu_bar.addMenu("View")
         # view_menu.addAction(self.toggle_dock_tools_act)
         
-        # 07: Create Status bar to display info tips:
+        # 07: Create About menu and add its actions:
+        about_action = QAction(QIcon("icons/about.png"), 'About', self)
+        about_action.setShortcut("Ctrl+Shift+H")
+        about_action.triggered.connect(self.about_us)
+        about_menu = menu_bar.addMenu("About")
+        about_menu.addAction(about_action)
+        
+        # 08: Create Status bar to display info tips:
         self.setStatusBar(QStatusBar(self))
+    
+        
+    def about_us(self):
+        """
+        Display information about the Developer who code this GUI.
+        """
+        QMessageBox.about(self,"About Picture Editor","Beginner's Pratical Guid to Create GUI\n\nThis program was create by:Khald Melizi\n\nPhone: +213780360303\n\nEmail:lkhadada@gmail.com\n\nDate:09/04/2022\n\nIn: Temacine W. Touggourt.")
+    
         
 # Run the program:
 if __name__ == "__main__":
