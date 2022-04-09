@@ -9,3 +9,6 @@ from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
 class PictureEditor(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.initialize_ui()
+        self.show()
+    
