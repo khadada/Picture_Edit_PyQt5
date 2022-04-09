@@ -72,5 +72,7 @@ class PictureEditor(QMainWindow):
         self.resize_act.setStatusTip("Resize picture to half of the original size.")
         self.resize_act.triggered.connect(self.resize_picture_half)
         
-        
+        # Create Menu Bar
+        self.menu_bar = self.menuBar()
+        self.menu_bar.setNativeMenuBar(False)
         
