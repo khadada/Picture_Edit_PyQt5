@@ -101,3 +101,7 @@ class PictureEditor(QMainWindow):
         edit_menu.addAction(self.resize_act)
         edit_menu.addSeparator()
         edit_menu.addAction(self.clear_act)
+        
+        # 06: Create View menu and add its actions:
+        view_menu = menu_bar.addMenu("View")
+        view_menu.addAction(self.toggle_dock_tools_act)
