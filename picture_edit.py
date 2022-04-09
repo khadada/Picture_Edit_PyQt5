@@ -72,6 +72,11 @@ class PictureEditor(QMainWindow):
         self.resize_act.setStatusTip("Resize picture to half of the original size.")
         self.resize_act.triggered.connect(self.resize_picture_half)
         
+        self.clear_act = QAction(QIcon('icons/clear.png'),"Clear Picture",self)
+        self.clear_act.setStatusTip("Clear the current picture")
+        self.clear_act.setShortcut("Ctrl+Shift+c")
+        self.clear_act.triggered.connect(self.clear_picture)
+        
         # 03: Create Menu Bar
         menu_bar = self.menuBar()
         menu_bar.setNativeMenuBar(False)
@@ -85,3 +90,14 @@ class PictureEditor(QMainWindow):
         file_menu.addSeparator()
         file_menu.addAction(self.exit_act)
         
+        # 05: Create Edit menu and add its actions:
+        edit_menu = menu_bar.addMenu("Edit")
+        edit_menu.addAction(self.rotate90_act)
+        edit_menu.addAction(self.rotate180_act)
+        edit_menu.addSeparator()
+        edit_menu.addAction(self.flip_h_act)
+        edit_menu.addAction(self.flip_v_act)
+        edit_menu.addSeparator()
+        edit_menu.addAction(self.resize_act)
+        edit_menu.addSeparator()
+        edit_menu.addAction(self.clear_act)
