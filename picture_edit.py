@@ -131,6 +131,12 @@ class PictureEditor(QMainWindow):
         tool_bar.addAction(self.clear_act)
         tool_bar.addSeparator()
         tool_bar.addAction(self.exit_act)
+    
+    def create_tools_docks(self):
+        """
+        Use View -> Edit picture tools menu and click the dock widget on or off.
+        Tools dock can be placen on the left or right og the main window.
+        """
     def about_us(self):
         """
         Display information about the Developer who code this GUI.
