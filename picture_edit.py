@@ -21,7 +21,7 @@ class PictureEditor(QMainWindow):
         # self.central_main_widget()
         # self.create_tools_docks()
         self.create_menu()
-        #self.create_toolbar()
+        self.create_toolbar()
         #self.picture_editor_widget()
     
     def create_menu(self):
@@ -120,6 +120,17 @@ class PictureEditor(QMainWindow):
         """
         Create toobar for picture editor 
         """
+        tool_bar = QToolBar()
+        tool_bar.setIconSize(QSize(25, 25))
+        self.addToolBar(tool_bar)
+        
+        # Adding actions to toolbar
+        tool_bar.addAction(self.open_act)
+        tool_bar.addAction(self.save_act)
+        tool_bar.addAction(self.print_act)
+        tool_bar.addAction(self.clear_act)
+        tool_bar.addSeparator()
+        tool_bar.addAction(self.exit_act)
     def about_us(self):
         """
         Display information about the Developer who code this GUI.
