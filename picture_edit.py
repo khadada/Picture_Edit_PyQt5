@@ -116,7 +116,10 @@ class PictureEditor(QMainWindow):
         # 08: Create Status bar to display info tips:
         self.setStatusBar(QStatusBar(self))
     
-        
+    def create_toolbar(self):
+        """
+        Create toobar for picture editor 
+        """
     def about_us(self):
         """
         Display information about the Developer who code this GUI.
