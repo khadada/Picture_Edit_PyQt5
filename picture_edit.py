@@ -137,6 +137,12 @@ class PictureEditor(QMainWindow):
         Use View -> Edit picture tools menu and click the dock widget on or off.
         Tools dock can be placen on the left or right og the main window.
         """
+        # Setup QDockWigdet:
+        self.dock_tools_view = QDockWidget()
+        self.dock_tools_view.setWindowTitle("Edit Picture Tools")
+        self.dock_tools_view.setAllowedAreas(Qt.LeftDockWidgetArea|Qt.RightDockWidgetArea)
+        
+        
     def about_us(self):
         """
         Display information about the Developer who code this GUI.
