@@ -168,6 +168,16 @@ class PictureEditor(QMainWindow):
         self.resize_btn.setMinimumSize(QSize(150, 50))
         self.resize_btn.setStatusTip("Resize picture to half of the original size.")
         self.resize_btn.clicked.connect(self.resize_picture_half)
+        # Setup vertical layout to contain all the push buttons above:
+        dock_layout_h = QVBoxLayout()
+        dock_layout_h.addWidget(self.rotate_90)
+        dock_layout_h.addWidget(self.rotate_180)
+        dock_layout_h.addStretch(1)
+        dock_layout_h.addWidget(self.flip_btn_h)
+        dock_layout_h.addWidget(self.flip_btn_v)
+        dock_layout_h.addStretch(1)
+        dock_layout_h.addWidget(self.resize_btn)
+        dock_layout_h.addStretch(6)
     def about_us(self):
         """
         Display information about the Developer who code this GUI.
