@@ -141,8 +141,33 @@ class PictureEditor(QMainWindow):
         self.dock_tools_view = QDockWidget()
         self.dock_tools_view.setWindowTitle("Edit Picture Tools")
         self.dock_tools_view.setAllowedAreas(Qt.LeftDockWidgetArea|Qt.RightDockWidgetArea)
-        
-        
+        # Create container QWidget to hold all widgets inside dock widget 
+        self.tools_container = QWidget()
+        # Btn for 90° :
+        self.rotate_90 = QPushButton('Rotate 90°')
+        self.rotate_90.setMinimumSize(QSize(150, 50))
+        self.rotate_90.setStatusTip("Rotate picture 90° clockwise")
+        self.rotate_90.clicked.connect(self.rotate_picture_90)
+        # Btn for 180° :
+        self.rotate_180 = QPushButton('Rotate 180°')
+        self.rotate_180.setMinimumSize(QSize(150, 50))
+        self.rotate_180.setStatusTip("Rotate picture 180° clockwise")
+        self.rotate_180.clicked.connect(self.rotate_picture_180)
+        # Btn for flip horizontal :
+        self.flip_btn_h = QPushButton('Flip Horizontal')
+        self.flip_btn_h.setMinimumSize(QSize(150, 50))
+        self.flip_btn_h.setStatusTip("Flip picture across horizontal axis")
+        self.flip_btn_h.clicked.connect(self.flip_picture_horizontal)
+        # Btn for flip vertical :
+        self.flip_btn_v = QPushButton('Flip Vertical')
+        self.flip_btn_v.setMinimumSize(QSize(150, 50))
+        self.flip_btn_v.setStatusTip("Flip picture across vertical axis")
+        self.flip_btn_v.clicked.connect(self.flip_picture_vertical)
+        # Btn for resize :
+        self.resize_btn = QPushButton('Resize Half')
+        self.resize_btn.setMinimumSize(QSize(150, 50))
+        self.resize_btn.setStatusTip("Resize picture to half of the original size.")
+        self.resize_btn.clicked.connect(self.resize_picture_half)
     def about_us(self):
         """
         Display information about the Developer who code this GUI.
