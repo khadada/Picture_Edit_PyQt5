@@ -182,6 +182,9 @@ class PictureEditor(QMainWindow):
         # then set the main widget of dock widget
         self.tools_container.setLayout(dock_layout_h)
         self.dock_tools_view.setWidget(self.tools_container)
+        # set initial location of dock widget:
+        self.addDockWidget(Qt.RightDockWidgetArea, self.dock_tools_view)
+        
         
         
     def about_us(self):
