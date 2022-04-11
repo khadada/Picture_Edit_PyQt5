@@ -178,6 +178,12 @@ class PictureEditor(QMainWindow):
         dock_layout_h.addStretch(1)
         dock_layout_h.addWidget(self.resize_btn)
         dock_layout_h.addStretch(6)
+        # Set the main layout for container of tools_container
+        # then set the main widget of dock widget
+        self.tools_container.setLayout(dock_layout_h)
+        self.dock_tools_view.setWidget(self.tools_container)
+        
+        
     def about_us(self):
         """
         Display information about the Developer who code this GUI.
