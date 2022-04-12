@@ -186,9 +186,19 @@ class PictureEditor(QMainWindow):
         self.addDockWidget(Qt.RightDockWidgetArea, self.dock_tools_view)
         # Handles the visibility of the dock widget:
         self.toggle_dock_tools_act = self.dock_tools_view.toggleViewAction()
-        
-        
-        
+    
+    def picture_editor_widget(self):
+        """
+        Setup instance of widgets for picture editor GUI.
+        """    
+        self.picture = QPixmap()
+        self.picture_labl = QLabel()
+        self.picture_labl.setAlignment(Qt.AlignCenter)
+        # Use setSizePolicy to specify now the widget can be resized,
+        # horizontally and vertically. Here , the picture will stretch horizontally
+        # but not verticaly
+        self.picture_labl.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Ignored)
+        self.setCentralWidget(self.picture_labl)
         
     def about_us(self):
         """
