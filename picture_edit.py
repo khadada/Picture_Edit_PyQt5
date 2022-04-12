@@ -39,7 +39,7 @@ class PictureEditor(QMainWindow):
         self.save_act = QAction(QIcon('icons/save.png'),"Save",self)
         self.save_act.setShortcut("Ctrl+S")
         self.save_act.setStatusTip("Save the picture")
-        #self.save_act.triggered.connect(self.save_image)
+        self.save_act.triggered.connect(self.save_picture)
         
         self.print_act = QAction(QIcon('icons/print.png'),"Print",self)
         self.print_act.setShortcut("Ctrl+P")
@@ -49,7 +49,7 @@ class PictureEditor(QMainWindow):
         self.exit_act = QAction(QIcon('icons/exit.png'),"Exit",self)
         self.exit_act.setShortcut("Ctrl+Q")
         self.exit_act.setStatusTip("Close the program (T_T).")
-        #self.exit_act.triggered.connect(self.close)
+        self.exit_act.triggered.connect(self.close)
         
         # 02: actions for "Edit" menu:
         self.rotate90_act = QAction("Rotate 90°",self)
@@ -212,6 +212,19 @@ class PictureEditor(QMainWindow):
         else:
             QMessageBox.information(self,"Error Occur","Unable to open the picture.",QMessageBox.Ok)   
         self.print_act.setEnabled(True)
+    
+    def save_picture(self):
+        """
+        Save The Picture.
+        Display error message if picture can't be saved.
+        """
+        picture_name,_ = QFileDialog.getSaveFileName(self,"Save Picture","","JPG Files (*jpeg *.jpg);;PNG Files (*.png);;Bitmap Files (*.bmp);;GIF Files (*.gif)")
+        if picture_name and self.picture.isNull() == False:
+            self.picture.save(picture_name)
+        else:
+            QMessageBox.warning(self,"Error Occur", "Unable to save the picture.",QMessageBox.Ok)
+    
+    
     def about_us(self):
         """
         Display information about the Developer who code this GUI.
