@@ -44,7 +44,7 @@ class PictureEditor(QMainWindow):
         self.print_act = QAction(QIcon('icons/print.png'),"Print",self)
         self.print_act.setShortcut("Ctrl+P")
         self.print_act.setStatusTip("Print the current picture.")
-        #self.print_act.triggered.connect(self.print_image)
+        self.print_act.triggered.connect(self.print_image)
         
         self.exit_act = QAction(QIcon('icons/exit.png'),"Exit",self)
         self.exit_act.setShortcut("Ctrl+Q")
@@ -224,7 +224,36 @@ class PictureEditor(QMainWindow):
         else:
             QMessageBox.warning(self,"Error Occur", "Unable to save the picture.",QMessageBox.Ok)
     
-    
+    def print_image(self):
+        """
+        Print image.
+        """
+        # Create printer object and pring out defined by platform
+        # the program is being run on.
+        # QPrinter.Native is the default
+        printer = QPrinter()
+        printer.setOutputFormat(QPrinter.NativeFormat)
+        # Create printer dialog ot configure printer:
+        print_dialog = QPrintDialog(printer)
+        # if the dialog is accept by the user, begin printing
+        if (print_dialog.exec_()==QPrintDialog.accept):
+            # User QPainter to output a pdf file
+            painter = QPainter()
+            # Begin painting device
+            painter.begin(printer)
+            # Set QRec to hold painter's currnet viewport, which 
+            # is the picture_labl
+            rec = QRect(painter.viewport())
+            # Get the size of picture_labl and use it to the size
+            # of the viewport
+            size = QSize(self.picture_labl.pixmap().size())
+            size.scale(rec.size(),Qt.KeepAspectRatio)
+            painter.setViewport(rec.x(), rec.y(),size.width(),size.height())
+            painter.setWindow(self.picture_labl.pixmap().rect())
+            # Scate the picture_labl ot fit the rec source (0,0)
+            painter.drawPixmap(0,0, self.picture_labl.pixmap())
+            # End painting
+            painter.end()
     def about_us(self):
         """
         Display information about the Developer who code this GUI.
