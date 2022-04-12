@@ -22,7 +22,7 @@ class PictureEditor(QMainWindow):
         # self.create_tools_docks()
         self.create_menu()
         self.create_toolbar()
-        #self.picture_editor_widget()
+        self.picture_editor_widget()
     
     def create_menu(self):
         """
@@ -34,7 +34,7 @@ class PictureEditor(QMainWindow):
         self.open_act = QAction(QIcon("icons/open.png"),"Open",self)
         self.open_act.setShortcut("Ctrl+O")
         self.open_act.setStatusTip("Open new picture")
-        #self.open_act.triggered.connect(self.open_image)
+        self.open_act.triggered.connect(self.open_picture)
         
         self.save_act = QAction(QIcon('icons/save.png'),"Save",self)
         self.save_act.setShortcut("Ctrl+S")
@@ -199,7 +199,19 @@ class PictureEditor(QMainWindow):
         # but not verticaly
         self.picture_labl.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Ignored)
         self.setCentralWidget(self.picture_labl)
-        
+    
+    def open_picture(self):
+        """
+        Open an picture file and display its content in label widget.
+        Display error message if image can't be opened
+        """ 
+        picture_file,_ = QFileDialog.getOpenFileName(self,"Open Picture","","JPG Files (*jpeg *.jpg);;PNG Files (*.png);;Bitmap Files (*.bmp);;GIF Files (*.gif)")
+        if picture_file:
+            self.picture = QPixmap(picture_file)
+            self.picture_labl.setPixmap(self.picture.scaled(self.picture.size(),Qt.KeepAspectRatio,Qt.SmoothTransformation))
+        else:
+            QMessageBox.information(self,"Error Occur","Unable to open the picture.",QMessageBox.Ok)   
+        self.print_act.setEnabled(True)
     def about_us(self):
         """
         Display information about the Developer who code this GUI.
