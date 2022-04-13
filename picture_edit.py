@@ -44,7 +44,7 @@ class PictureEditor(QMainWindow):
         self.print_act = QAction(QIcon('icons/print.png'),"Print",self)
         self.print_act.setShortcut("Ctrl+P")
         self.print_act.setStatusTip("Print the current picture.")
-        self.print_act.triggered.connect(self.print_image)
+        self.print_act.triggered.connect(self.print_picture)
         
         self.exit_act = QAction(QIcon('icons/exit.png'),"Exit",self)
         self.exit_act.setShortcut("Ctrl+Q")
@@ -75,7 +75,7 @@ class PictureEditor(QMainWindow):
         self.clear_act = QAction(QIcon('icons/clear.png'),"Clear Picture",self)
         self.clear_act.setStatusTip("Clear the current picture")
         self.clear_act.setShortcut("Ctrl+Shift+c")
-        #self.clear_act.triggered.connect(self.clear_picture)
+        self.clear_act.triggered.connect(self.clear_picture)
         
         # 03: Create Menu Bar
         menu_bar = self.menuBar()
@@ -224,7 +224,7 @@ class PictureEditor(QMainWindow):
         else:
             QMessageBox.warning(self,"Error Occur", "Unable to save the picture.",QMessageBox.Ok)
     
-    def print_image(self):
+    def print_picture(self):
         """
         Print image.
         """
@@ -236,7 +236,7 @@ class PictureEditor(QMainWindow):
         # Create printer dialog ot configure printer:
         print_dialog = QPrintDialog(printer)
         # if the dialog is accept by the user, begin printing
-        if (print_dialog.exec_()==QPrintDialog.accept):
+        if (print_dialog.exec_()==QPrintDialog.Accepted):
             # User QPainter to output a pdf file
             painter = QPainter()
             # Begin painting device
@@ -246,14 +246,23 @@ class PictureEditor(QMainWindow):
             rec = QRect(painter.viewport())
             # Get the size of picture_labl and use it to the size
             # of the viewport
-            size = QSize(self.picture_labl.pixmap().size())
+            size = QSize(self.picture_labl.size())
+            print(f"the size is {size}")
             size.scale(rec.size(),Qt.KeepAspectRatio)
             painter.setViewport(rec.x(), rec.y(),size.width(),size.height())
-            painter.setWindow(self.picture_labl.pixmap().rect())
+            painter.setWindow(self.picture_labl.rect())
             # Scate the picture_labl ot fit the rec source (0,0)
-            painter.drawPixmap(0,0, self.picture_labl.pixmap())
+            painter.drawPixmap(0,0,self.picture_labl.pixmap())
             # End painting
             painter.end()
+        
+    def clear_picture(self):
+        """
+        Clears current image in QLabel widget
+        """
+        self.picture_labl.clear()
+        self.picture = QPixmap()
+    
     def about_us(self):
         """
         Display information about the Developer who code this GUI.
